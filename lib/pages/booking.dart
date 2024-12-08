@@ -87,8 +87,8 @@ class _BookingState extends State<Booking> {
                       fontSize: 22,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),
-                )),
-              )
+                ),),
+              ),
             ],
           ),
         ),

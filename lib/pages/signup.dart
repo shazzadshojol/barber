@@ -1,16 +1,17 @@
 import 'package:barber_booking/pages/home.dart';
-import 'package:barber_booking/pages/signup.dart';
+import 'package:barber_booking/pages/login.dart';
 import 'package:barber_booking/widget/custom_button.dart';
+import 'package:barber_booking/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
@@ -23,7 +24,7 @@ class _LoginState extends State<Login> {
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(color: Colors.black),
               child: const Text(
-                "Hello,\nSign in!",
+                "Create your\nAccount",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
@@ -35,7 +36,7 @@ class _LoginState extends State<Login> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 padding: const EdgeInsets.all(20),
-                height: screen.height * 0.70 -
+                height: screen.height * 0.75 -
                     MediaQuery.of(context).viewInsets.bottom,
                 width: screen.width,
                 decoration: const BoxDecoration(
@@ -54,6 +55,16 @@ class _LoginState extends State<Login> {
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
+                          hintText: "Enter Your full-name",
+                          labelText: "Name",
+                          prefixIcon: Icon(Icons.person),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
                           hintText: "yourname@email.com",
                           labelText: "Email",
                           prefixIcon: Icon(Icons.email),
@@ -64,36 +75,25 @@ class _LoginState extends State<Login> {
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
-                            hintText: "Enter your password",
+                            hintText: "Create your password",
                             labelText: "password",
                             prefixIcon: Icon(Icons.lock),
                             suffixIcon: Icon(Icons.remove_red_eye)),
                       ),
                       const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "Forgot Password?",
-                        style: TextStyle(
-                          color: Colors.deepOrange,
-                          fontSize: 14,
-                        ),
-                      ),
-                      const SizedBox(
                         height: 30,
                       ),
                       InkWell(
-                        onTap: () {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Home(),
-                              ),
-                              (Route<dynamic> route) => false);
-                        },
-                        child: CustomButton(
-                            screen: screen, button_text: "SIGN IN"),
-                      ),
+                          onTap: () {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Home(),
+                                ),
+                                (Route<dynamic> route) => false);
+                          },
+                          child: CustomButton(
+                              screen: screen, button_text: "SIGN UP")),
                       const SizedBox(
                         height: 30,
                       ),
@@ -131,7 +131,7 @@ class _LoginState extends State<Login> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            "Don't have an account?",
+                            "have an account?",
                             style: TextStyle(
                               color: Colors.deepOrange,
                               fontSize: 16,
@@ -139,15 +139,15 @@ class _LoginState extends State<Login> {
                           ),
                           InkWell(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignUp(),
-                                ),
-                              );
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Login(),
+                                  ),
+                                  (Route<dynamic> route) => false);
                             },
                             child: const Text(
-                              " Signup",
+                              " sign in",
                               style: TextStyle(
                                 color: Colors.deepOrange,
                                 fontSize: 16,
