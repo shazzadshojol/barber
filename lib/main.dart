@@ -1,7 +1,4 @@
-import 'package:barber_booking/pages/home.dart';
-import 'package:barber_booking/pages/login.dart';
 import 'package:barber_booking/pages/onboarding.dart';
-import 'package:barber_booking/pages/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {

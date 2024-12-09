@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "432741547435",
+    "firebase_url": "https://blood-finder-fa807-default-rtdb.firebaseio.com",
+    "project_id": "blood-finder-fa807",
+    "storage_bucket": "blood-finder-fa807.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432741547435:android:4ca143cd1589137089a6ee",
+        "android_client_info": {
+          "package_name": "com.example.barber_booking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_IieiBq3ZdNodgKXJxhltuJmcbY4Iufk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,6 @@
 import 'package:barber_booking/pages/home.dart';
 import 'package:barber_booking/pages/login.dart';
 import 'package:barber_booking/widget/custom_button.dart';
-import 'package:barber_booking/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
