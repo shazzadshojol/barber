@@ -1,7 +1,10 @@
 import 'package:barber_booking/pages/onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -25,7 +28,7 @@ class MyApp extends StatelessWidget {
           labelStyle: const TextStyle(
             color: Colors.white,
             fontSize: 18,
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -45,7 +48,7 @@ class MyApp extends StatelessWidget {
                 color: Colors.white60, // Default border color
                 width: 1.5,
               ),
-            )
+            ),
 
         ),
       ),
