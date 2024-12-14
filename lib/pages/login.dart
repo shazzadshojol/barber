@@ -1,6 +1,8 @@
 import 'package:barber_booking/pages/home.dart';
 import 'package:barber_booking/pages/signup.dart';
+import 'package:barber_booking/widget/buildloginform.dart';
 import 'package:barber_booking/widget/custom_button.dart';
+import 'package:barber_booking/widget/userlogin.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -11,6 +13,12 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String? email, password;
+  TextEditingController email_editor_controller = TextEditingController();
+  TextEditingController password_editor_controller =
+      TextEditingController();
+  final _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     Size screen = MediaQuery.of(context).size;
@@ -52,23 +60,7 @@ class _LoginState extends State<Login> {
                       const SizedBox(
                         height: 30,
                       ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          hintText: "yourname@email.com",
-                          labelText: "Email",
-                          prefixIcon: Icon(Icons.email),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                            hintText: "Enter your password",
-                            labelText: "password",
-                            prefixIcon: Icon(Icons.lock),
-                            suffixIcon: Icon(Icons.remove_red_eye)),
-                      ),
+                      BuildLoginForm().buildLoginForm(_formkey,email_editor_controller,password_editor_controller),
                       const SizedBox(
                         height: 10,
                       ),
@@ -91,8 +83,19 @@ class _LoginState extends State<Login> {
                               ),
                               (Route<dynamic> route) => false);
                         },
-                        child: CustomButton(
-                            screen: screen, button_text: "SIGN IN"),
+                        child: InkWell(
+                          onTap: () {
+                            if (_formkey.currentState!.validate()) {
+                              setState(() {
+                                email = email_editor_controller.text;
+                                password = password_editor_controller.text;
+                              });
+                              UserLogin().userlogin(context,email,password);
+                            }
+                          },
+                          child: CustomButton(
+                              screen: screen, button_text: "SIGN IN"),
+                        ),
                       ),
                       const SizedBox(
                         height: 30,
@@ -165,5 +168,16 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+
+
+
+
+  @override
+  void dispose() {
+    email_editor_controller;
+    password_editor_controller;
+    super.dispose();
   }
 }

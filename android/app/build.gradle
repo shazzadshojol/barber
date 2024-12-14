@@ -13,16 +13,18 @@ dependencies {
 
 android {
     namespace = "com.example.barber_booking"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+//    compileSdk = flutter.compileSdkVersion
+    compileSdkVersion 34
+    ndkVersion = "25.1.8937393"
+    buildToolsVersion "33.0.2"
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_17
     }
 
     defaultConfig {
@@ -34,6 +36,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+
     }
 
     buildTypes {

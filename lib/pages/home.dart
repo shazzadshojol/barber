@@ -1,4 +1,6 @@
-import 'package:barber_booking/widget/services_grid.dart';
+import 'package:barber_booking/services/shared_preference.dart';
+import 'package:barber_booking/widget/build_homeprofilesection.dart';
+import 'package:barber_booking/widget/buildhomegrid.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -9,6 +11,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String? name,image;
+  getdatafromsharedpreferences() async{
+    name=await SharedPreferenceHelper().getUserName();
+    image=await SharedPreferenceHelper().getUserImage();
+    setState(() {
+    });
+  }
+
+  getontheload() async{
+    await getdatafromsharedpreferences();
+    setState(() {
+    });
+  }
+
+  @override
+  void initState() {
+    getontheload();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,39 +40,7 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hello,",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                      Text(
-                        "Mostafiz Emon",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      "assets/images/profile.png",
-                      height: 60,
-                      width: 60,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                ],
-              ),
+              BuildHomeProfileSection().buildHomeProfileSection(name ?? "Anonymous"),
               const SizedBox(
                 height: 15.0,
               ),
@@ -71,60 +60,7 @@ class _HomeState extends State<Home> {
               const SizedBox(
                 height: 20.0,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ServicesGrid(
-                    imagepath: "assets/images/classic_shaving.png",
-                    servicename: "Classic Shaving",
-                  ),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
-                  ServicesGrid(
-                    imagepath: "assets/images/hair_washing.png",
-                    servicename: "Hair Washing",
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ServicesGrid(
-                    imagepath: "assets/images/hair_cutting.png",
-                    servicename: "Hair Cutting",
-                  ),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
-                  ServicesGrid(
-                    imagepath: "assets/images/beard_trimming.png",
-                    servicename: "Beard Trimming",
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ServicesGrid(
-                    imagepath: "assets/images/facial.png",
-                    servicename: "Facials",
-                  ),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
-                  ServicesGrid(
-                    imagepath: "assets/images/kids_haircut.png",
-                    servicename: "Kids HairCutting",
-                  ),
-                ],
-              ),
+              BuildHomeGrid().buildHomeGrid(),
             ],
           ),
         ),

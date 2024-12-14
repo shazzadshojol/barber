@@ -16,3 +16,16 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+buildscript {
+    repositories {
+        google() // For Android Gradle Plugin
+        mavenCentral() // General repository for libraries
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.1' // Use a stable version
+        classpath 'com.google.gms:google-services:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10"
+    }
+}
+
